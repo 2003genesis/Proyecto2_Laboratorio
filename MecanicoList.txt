@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Proyecto2_Laboratorio.Objetos
+{
+   class MecanicoList
+    {
+        public List<Mecanico> mecanicoslist { get; set; }
+        public MecanicoList()
+        {
+            mecanicoslist = new List<Mecanico>();
+        }
+        public void Add(Mecanico pmecanico)
+        {
+            mecanicoslist.Add(pmecanico);
+        }
+        public Mecanico Search(string nombre)
+        {
+            if (mecanicoslist == null)
+            {
+                return null;
+            }
+            foreach (var mecanico in mecanicoslist)
+            {
+                if (mecanico.Nombre == nombre)
+                {
+                    return mecanico;
+                }
+            }
+            return null;
+        }
+
+
+        public void Delete(string nombre)
+        {
+            foreach (var mecanico in mecanicoslist)
+            {
+                if (mecanico.Nombre == nombre)
+                {
+                    mecanicoslist.Remove(mecanico);
+                    break;
+                }
+
+            }
+
+        }
+
+        public Mecanico Update(Mecanico pmecanico)
+        {
+            if (mecanicoslist == null)
+            {
+                return null;
+            }
+            foreach (var mecanico in mecanicoslist)
+            {
+                if (mecanico.Nombre == pmecanico.Nombre)
+                {
+                    mecanico.Especialidad = pmecanico.Especialidad;
+                    mecanico.Experiencia = pmecanico.Experiencia;
+                    return mecanico;
+                }
+            }
+            return null;
+        }
+    }
+}
+
+
